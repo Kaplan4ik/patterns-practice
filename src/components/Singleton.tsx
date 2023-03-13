@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SingletonService } from '../singletone/singletonService';
+import { SingletonService } from '../singletone/singleton-service';
 import { baseTheme } from '../styled/theme';
 
 const Button = styled('button')<{ pt?: string }>`

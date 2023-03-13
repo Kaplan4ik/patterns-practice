@@ -1,10 +1,13 @@
 import React from 'react';
 import { Singleton } from './components/Singleton';
-import { ServerWorkerFacade } from './facade/serviceWorkerFacade';
+import { ServiceWorkerBeforeunload } from './facade/service-worker-beforeunload';
+import { ServiceWorkerFacade } from './facade/service-worker-facade';
 
 function App() {
-  const serverWorkerInit = new ServerWorkerFacade();
-  serverWorkerInit.sendDataOnBeforeUnload('api/url', { data: 'Unload page' });
+  const beforeUnload = new ServiceWorkerFacade(
+    new ServiceWorkerBeforeunload('api/logout', { data: 'Logout' })
+  );
+  beforeUnload.sendData();
 
   return <Singleton />;
 }

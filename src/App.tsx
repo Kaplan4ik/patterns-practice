@@ -1,4 +1,5 @@
 import React from 'react';
+import { Factory } from './components/Factory';
 import { Native } from './components/Native';
 import { Singleton } from './components/Singleton';
 import { UserPermissionListener } from './components/UserPermissionListener';
@@ -16,6 +17,7 @@ function App() {
       <Singleton />
       <Native />
       <UserPermissionListener />
+      <Factory />
     </>
   );
 }

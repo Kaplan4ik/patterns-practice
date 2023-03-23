@@ -4,16 +4,44 @@ export class Observable {
     this.observers = [];
   }
 
-  subscribe(observer) {
-    this.observers.push(observer);
+  subscribe(transform, callback) {
+    const subscription = {
+      transform,
+      promise: null,
+      resolve: null,
+      callback,
+    };
+
+    subscription.promise = new Promise((resolve) => {
+      subscription.resolve = resolve;
+    });
+
+    this.observers.push(subscription);
+
+    return subscription.promise;
   }
 
-  unsubscribe(observer) {
-    this.observers = this.observers.filter((obs) => obs !== observer);
+  unsubscribe(subscription) {
+    const index = this.observers.findIndex((obs) => obs === subscription);
+
+    if (~index) {
+      this.observers.splice(index, 1);
+    }
   }
 
   notify() {
-    this.observers.forEach((observer) => observer(this.state));
+    this.observers.forEach((subscription) => {
+      const { transform, resolve, callback } = subscription;
+      const value = transform(this.state);
+
+      setTimeout(() => {
+        resolve(value);
+      }, 0);
+
+      subscription.promise.then((result) => {
+        callback(result);
+      });
+    });
   }
 
   set(newState) {

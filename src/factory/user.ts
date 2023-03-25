@@ -1,5 +1,5 @@
 export class User {
-  private name: string;
+  public name: string;
   private permission: string;
 
   constructor(name: string, permission: string) {

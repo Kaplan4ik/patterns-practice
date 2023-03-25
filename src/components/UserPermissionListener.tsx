@@ -26,11 +26,5 @@ export const UserPermissionListener = () => {
   const admin = adminUser();
   const adminGod = superAdmin();
 
-  console.group('UserPermissionListener.tsx', 'UserPermissionListener', '29');
-  console.log(user);
-  console.log(admin);
-  console.log(adminGod);
-  console.groupEnd();
-
   return <></>;
 };

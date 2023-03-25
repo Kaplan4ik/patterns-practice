@@ -4,7 +4,9 @@ export const Native = () => {
   const observable = new Observable(0);
 
   const onClickSubscribe = () => {
-    observable.set(Date.now());
+    setInterval(() => {
+      observable.set(Date.now());
+    }, 1000);
   };
   observable.subscribe(
     (currentState: any) => {

@@ -9,9 +9,9 @@ export const Factory = () => {
 
   return (
     <>
-      {user}
-      {admin}
-      {superAdmin}
+      {user.name}
+      {admin.name}
+      {superAdmin.name}
     </>
   );
 };

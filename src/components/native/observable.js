@@ -1,51 +1,20 @@
 export class Observable {
-  constructor(initialState) {
-    this.state = initialState;
-    this.observers = [];
+  constructor() {
+    this.eventTarget = new EventTarget();
   }
 
-  subscribe(transform, callback) {
-    const subscription = {
-      transform,
-      promise: null,
-      resolve: null,
-      callback,
-    };
-
-    subscription.promise = new Promise((resolve) => {
-      subscription.resolve = resolve;
-    });
-
-    this.observers.push(subscription);
-
-    return subscription.promise;
+  subscribe(callback) {
+    this.eventTarget.addEventListener('data', callback);
   }
 
-  unsubscribe(subscription) {
-    const index = this.observers.findIndex((obs) => obs === subscription);
-
-    if (~index) {
-      this.observers.splice(index, 1);
-    }
+  emit(data) {
+    const event = new CustomEvent('data', { detail: data });
+    this.eventTarget.dispatchEvent(event);
   }
 
-  notify() {
-    this.observers.forEach((subscription) => {
-      const { transform, resolve, callback } = subscription;
-      const value = transform(this.state);
-
-      setTimeout(() => {
-        resolve(value);
-      }, 0);
-
-      subscription.promise.then((result) => {
-        callback(result);
-      });
-    });
-  }
-
-  set(newState) {
-    this.state = newState;
-    this.notify();
+  async getData() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const data = await response.json();
+    this.emit(data);
   }
 }

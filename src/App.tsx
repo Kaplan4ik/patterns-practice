@@ -1,4 +1,5 @@
 import React from 'react';
+import { AbstractFactory } from './components/AbstractFactory';
 import { Factory } from './components/Factory';
 import { Native } from './components/Native';
 import { Singleton } from './components/Singleton';
@@ -18,6 +19,7 @@ function App() {
       <Native />
       <UserPermissionListener />
       <Factory />
+      <AbstractFactory />
     </>
   );
 }

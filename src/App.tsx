@@ -3,6 +3,7 @@ import { AbstractFactory } from './components/AbstractFactory';
 import { Factory } from './components/Factory';
 import { Native } from './components/Native';
 import { Singleton } from './components/Singleton';
+import { State } from './components/State';
 import { UserPermissionListener } from './components/UserPermissionListener';
 import { ServiceWorkerBeforeunload } from './facade/service-worker-beforeunload';
 import { ServiceWorkerFacade } from './facade/service-worker-facade';
@@ -20,6 +21,8 @@ function App() {
       <UserPermissionListener />
       <Factory />
       <AbstractFactory />
+      <br />
+      <State />
     </>
   );
 }

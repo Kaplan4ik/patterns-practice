@@ -4,6 +4,7 @@ import { Factory } from './components/Factory';
 import { Native } from './components/Native';
 import { Singleton } from './components/Singleton';
 import { State } from './components/State';
+import { Strategy } from './components/Strategy';
 import { UserPermissionListener } from './components/UserPermissionListener';
 import { ServiceWorkerBeforeunload } from './facade/service-worker-beforeunload';
 import { ServiceWorkerFacade } from './facade/service-worker-facade';
@@ -23,6 +24,7 @@ function App() {
       <AbstractFactory />
       <br />
       <State />
+      <Strategy />
     </>
   );
 }

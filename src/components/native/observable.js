@@ -9,7 +9,7 @@ export class Observable {
 
   unsubscribe(observer) {
     const index = this.observers.indexOf(observer);
-    if (index > -1) {
+    if (~index) {
       this.observers.splice(index, 1);
     }
   }

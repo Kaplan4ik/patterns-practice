@@ -1,5 +1,6 @@
 import React from 'react';
 import { AbstractFactory } from './components/AbstractFactory';
+import { Adapter } from './components/Adapter';
 import { Decorators } from './components/Decorators';
 import { Factory } from './components/Factory';
 import { Native } from './components/Native';
@@ -27,6 +28,7 @@ function App() {
       <State />
       <Strategy />
       <Decorators />
+      <Adapter />
     </>
   );
 }

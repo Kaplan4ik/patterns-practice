@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Autopilot } from '../decorators/classes/autopilot';
 import { Bmw } from '../decorators/classes/bmw';
 import { Navigation } from '../decorators/classes/navigation';

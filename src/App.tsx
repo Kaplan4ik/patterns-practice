@@ -15,6 +15,9 @@ function App() {
   const beforeUnload = new ServiceWorkerFacade(
     new ServiceWorkerBeforeunload('api/logout', { data: 'Logout' })
   );
+  console.group('App.tsx', 'App', '18');
+  console.log('DEBUG', 123);
+  console.groupEnd();
   beforeUnload.sendData();
 
   return (
